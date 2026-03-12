@@ -1,0 +1,42 @@
+HS-Brexit Majority-Vote BERT Baseline
+=====================================
+
+Dataset:
+HS-Brexit
+
+Model:
+bert-base-uncased
+
+Architecture:
+Standard HuggingFace BertForSequenceClassification
+Sentence representation based on CLS embedding
+
+Training setup:
+epochs: 3
+batch size: 8
+learning rate: 2e-5
+weight decay: 0.01
+evaluation metric for model selection: macro_f1
+
+Dataset sizes:
+train: 784
+dev: 168
+test: 168
+
+Label distribution (train):
+0 (non-hate): 712
+1 (hate): 72
+
+Test results:
+eval_loss: 0.2986
+eval_accuracy: 0.8988
+eval_macro_f1: 0.5258
+eval_weighted_f1: 0.8563
+
+Notes:
+This experiment implements the majority-vote baseline for the ACTOR replication.
+Each tweet is assigned a single label based on the majority of annotator labels
+(`hard_label` in the dataset).
+
+This baseline ignores annotator disagreement and treats the task as a standard
+binary classification problem.
