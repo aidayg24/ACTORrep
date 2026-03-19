@@ -1,0 +1,45 @@
+HS-Brexit Single-Annotation BERT Baseline
+========================================
+
+Dataset:
+HS-Brexit
+
+Model:
+bert-base-uncased
+
+Architecture:
+Standard HuggingFace BertForSequenceClassification
+Sentence representation based on CLS embedding
+
+Training setup:
+epochs: 3
+batch size: 8
+learning rate: 2e-5
+weight decay: 0.01
+evaluation metric for model selection: macro_f1
+
+Dataset sizes (annotation-level):
+train: 4704
+dev: 1008
+test: 1008
+
+Label distribution (train):
+0 (non-hate): 4272
+1 (hate): 432
+
+Test results:
+eval_loss: 0.3294
+eval_accuracy: 0.8770
+eval_macro_f1: 0.5692
+eval_weighted_f1: 0.8380
+
+Notes:
+This experiment trains a standard single-head BERT classifier on all
+individual annotator labels instead of majority-vote labels.
+
+Each tweet appears once per annotator in the dataset, so annotator
+disagreement is preserved during training.
+
+However, annotator identity is NOT modeled in this baseline. The model
+still predicts a single binary label for each input text.
+

@@ -1,0 +1,50 @@
+HS-Brexit ACTOR Initial Labeled Pool
+====================================
+
+Dataset:
+HS-Brexit
+
+Model:
+ACTOR (shared bert-base-uncased encoder with annotator-specific heads)
+
+Architecture:
+- Shared BERT encoder
+- 6 annotator-specific linear heads
+- CLS embedding used as sentence representation
+- Each example routed through the head corresponding to its annotator
+
+Experiment type:
+Active learning setup - round 0 / initial labeled pool only
+
+Initial labeled pool:
+600 annotation-level training examples
+
+Dev/Test sets:
+Original annotation-level dev and test sets
+
+Training setup:
+epochs: 3
+batch size: 8
+learning rate: 2e-5
+weight decay: 0.01
+evaluation metric for model selection: macro_f1
+
+Initial pool label distribution:
+0 (non-hate): 523
+1 (hate): 77
+
+Test results:
+eval_loss: 0.4002
+eval_accuracy: 0.8690
+eval_macro_f1: 0.4650
+eval_weighted_f1: 0.8082
+
+Notes:
+This experiment is the round-0 active learning baseline.
+
+The ACTOR model is trained only on the initial labeled pool, before any
+new examples are acquired from the unlabeled pool.
+
+This result serves as the starting point for later active learning rounds,
+where newly acquired examples will be added to the labeled pool and the
+model will be retrained.

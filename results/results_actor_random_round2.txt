@@ -1,0 +1,55 @@
+HS-Brexit ACTOR Random Acquisition Round 2
+==========================================
+
+Dataset:
+HS-Brexit
+
+Model:
+ACTOR (shared bert-base-uncased encoder with annotator-specific heads)
+
+Architecture:
+- Shared BERT encoder
+- 6 annotator-specific linear heads
+- CLS embedding used as sentence representation
+- Each example routed through the head corresponding to its annotator
+
+Experiment type:
+Active learning setup - random acquisition, round 2
+
+Training data:
+Round-2 labeled pool after adding 200 more randomly acquired examples
+
+Labeled pool size:
+1000 annotation-level examples
+
+Dev/Test sets:
+Original annotation-level dev and test sets
+
+Training setup:
+epochs: 3
+batch size: 8
+learning rate: 2e-5
+weight decay: 0.01
+evaluation metric for model selection: macro_f1
+
+Round-2 pool label distribution:
+0 (non-hate): 877
+1 (hate): 123
+
+Test results:
+eval_loss: 0.3417
+eval_accuracy: 0.8810
+eval_macro_f1: 0.5731
+eval_weighted_f1: 0.8407
+
+Notes:
+This experiment trains ACTOR after two random acquisition rounds.
+
+Comparison:
+- Initial pool ACTOR macro-F1: 0.4650
+- Random round 1 ACTOR macro-F1: 0.6107
+- Random round 2 ACTOR macro-F1: 0.5731
+
+The round-2 score did not surpass round 1, which is possible under random
+acquisition because newly sampled examples are not guaranteed to be maximally
+informative.

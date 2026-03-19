@@ -1,46 +1,41 @@
 """
-Single-annotation BERT baseline for HS-Brexit.
+Train ACTOR on the round-1 labeled pool.
 
-This script trains a standard single-head BERT classifier on all individual
-annotations in the HS-Brexit dataset.
+What this script does
+---------------------
+This script trains the ACTOR model after one random acquisition round.
 
-Unlike the majority-vote baseline, where each tweet has only one label,
-this dataset contains one row per annotation:
+Training data:
+- labeled pool after round 1 acquisition
 
-    item_id, text, annotator_id, label
+Evaluation data:
+- original annotation-level dev set
+- original annotation-level test set
 
-So if a tweet was labeled by 6 annotators, it appears 6 times in the training
-data, potentially with different labels.
+Why this step matters
+---------------------
+This is the first real active learning comparison point.
 
+We already have:
+- ACTOR trained on the initial labeled pool only
 
-This baseline keeps human disagreement in the training data, but it does NOT
-model annotator identity explicitly.
-
-This makes it an important comparison point between:
-1. majority-vote baseline
-2. single-annotation baseline
-3. ACTOR multi-head annotator-specific model
-
-Notes
------
-- We do not use annotator_id as an input feature here.
-- We do not use class weights yet.
-- We evaluate on annotation-level dev/test sets.
-- Because the dataset is imbalanced, macro-F1 is important.
+Now we train ACTOR again after adding one randomly acquired batch.
+Then we compare whether performance improves.
 """
 
 import numpy as np
+import torch
+import torch.nn as nn
 import pandas as pd
 from datasets import Dataset
 from sklearn.metrics import f1_score, accuracy_score
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoTokenizer, BertModel
 from transformers import TrainingArguments, Trainer
 
-
 # ---------------------------
-# Load annotation-level CSV splits
+# 1. Load datasets
 # ---------------------------
-train_path = "../processed_data/hsbrexit_train_annotations.csv"
+train_path = "../processed_data/hsbrexit_labeled_pool_round1.csv"
 dev_path = "../processed_data/hsbrexit_dev_annotations.csv"
 test_path = "../processed_data/hsbrexit_test_annotations.csv"
 
@@ -48,43 +43,45 @@ train_df = pd.read_csv(train_path)
 dev_df = pd.read_csv(dev_path)
 test_df = pd.read_csv(test_path)
 
-print("Train size:", len(train_df))
+print("Round-1 labeled pool size:", len(train_df))
 print("Dev size:", len(dev_df))
 print("Test size:", len(test_df))
 
-print("\nTrain label distribution:")
+print("\nRound-1 pool label distribution:")
 print(train_df["label"].value_counts())
 
-print("\nDev label distribution:")
-print(dev_df["label"].value_counts())
+# ---------------------------
+# 2. Create annotator mapping
+# ---------------------------
+annotators = sorted(train_df["annotator_id"].unique())
+annotator_to_id = {ann: i for i, ann in enumerate(annotators)}
+num_annotators = len(annotators)
 
-print("\nTest label distribution:")
-print(test_df["label"].value_counts())
+train_df["annotator_idx"] = train_df["annotator_id"].map(annotator_to_id)
+dev_df["annotator_idx"] = dev_df["annotator_id"].map(annotator_to_id)
+test_df["annotator_idx"] = test_df["annotator_id"].map(annotator_to_id)
 
-print("\nUnique annotators in train:", train_df["annotator_id"].nunique())
-
+print("\nAnnotator mapping:")
+print(annotator_to_id)
 
 # ---------------------------
-# Rename label column for Hugging Face
+# 3. Rename label column
 # ---------------------------
 train_df = train_df.rename(columns={"label": "labels"})
 dev_df = dev_df.rename(columns={"label": "labels"})
 test_df = test_df.rename(columns={"label": "labels"})
 
-
 # ---------------------------
-# Convert pandas -> Hugging Face Dataset
+# 4. Convert to HF Dataset
 # ---------------------------
 train_dataset = Dataset.from_pandas(train_df)
 dev_dataset = Dataset.from_pandas(dev_df)
 test_dataset = Dataset.from_pandas(test_df)
 
-
 # ---------------------------
-# Load tokenizer
+# 5. Tokenize
 # ---------------------------
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-
 
 def tokenize_function(examples):
     return tokenizer(
@@ -94,45 +91,70 @@ def tokenize_function(examples):
         max_length=128
     )
 
-
 train_tokenized = train_dataset.map(tokenize_function, batched=True)
 dev_tokenized = dev_dataset.map(tokenize_function, batched=True)
 test_tokenized = test_dataset.map(tokenize_function, batched=True)
 
-
-# ---------------------------
-# Remove unused columns
-# annotator_id is kept in the dataset file for analysis,
-# but not used by this baseline model
-# ---------------------------
 train_tokenized = train_tokenized.remove_columns(["item_id", "text", "annotator_id"])
 dev_tokenized = dev_tokenized.remove_columns(["item_id", "text", "annotator_id"])
 test_tokenized = test_tokenized.remove_columns(["item_id", "text", "annotator_id"])
 
-
-# ---------------------------
-# Set PyTorch format
-# ---------------------------
 train_tokenized.set_format("torch")
 dev_tokenized.set_format("torch")
 test_tokenized.set_format("torch")
 
-print("\nFinal columns:", train_tokenized.column_names)
-print("First label:", train_tokenized[0]["labels"])
-
-
-# ---------------------------
-# Load model
-# Standard BERT classifier, CLS-based
-# ---------------------------
-model = AutoModelForSequenceClassification.from_pretrained(
-    "bert-base-uncased",
-    num_labels=2
-)
-
+print("\nFinal columns:")
+print(train_tokenized.column_names)
 
 # ---------------------------
-# Define evaluation metrics
+# 6. Define ACTOR model
+# ---------------------------
+class ActorModel(nn.Module):
+    """
+    Shared BERT encoder + one linear head per annotator.
+    """
+
+    def __init__(self, num_annotators, num_labels=2):
+        super().__init__()
+        self.bert = BertModel.from_pretrained("bert-base-uncased")
+        hidden_size = self.bert.config.hidden_size
+
+        self.annotator_heads = nn.ModuleList([
+            nn.Linear(hidden_size, num_labels) for _ in range(num_annotators)
+        ])
+
+        self.loss_fn = nn.CrossEntropyLoss()
+
+    def forward(self, input_ids, attention_mask, token_type_ids=None, annotator_idx=None, labels=None):
+        outputs = self.bert(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            token_type_ids=token_type_ids
+        )
+
+        cls_output = outputs.last_hidden_state[:, 0, :]
+        batch_size = cls_output.size(0)
+        num_labels = self.annotator_heads[0].out_features
+
+        logits = torch.zeros(batch_size, num_labels, device=cls_output.device)
+
+        for i in range(batch_size):
+            head_idx = annotator_idx[i].item()
+            logits[i] = self.annotator_heads[head_idx](cls_output[i])
+
+        loss = None
+        if labels is not None:
+            loss = self.loss_fn(logits, labels)
+
+        return {"loss": loss, "logits": logits}
+
+# ---------------------------
+# 7. Create model
+# ---------------------------
+model = ActorModel(num_annotators=num_annotators, num_labels=2)
+
+# ---------------------------
+# 8. Metrics
 # ---------------------------
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
@@ -144,12 +166,11 @@ def compute_metrics(eval_pred):
         "weighted_f1": f1_score(labels, predictions, average="weighted"),
     }
 
-
 # ---------------------------
-# Training configuration
+# 9. Training arguments
 # ---------------------------
 training_args = TrainingArguments(
-    output_dir="../outputs/single_annotation_baseline",
+    output_dir="../outputs/actor_round1",
     eval_strategy="epoch",
     save_strategy="epoch",
     logging_strategy="epoch",
@@ -164,9 +185,8 @@ training_args = TrainingArguments(
     report_to="none"
 )
 
-
 # ---------------------------
-# Create Trainer
+# 10. Trainer
 # ---------------------------
 trainer = Trainer(
     model=model,
@@ -176,18 +196,16 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 
-print("\nSetup complete. Trainer created successfully.")
-
+print("\nTrainer created successfully.")
 
 # ---------------------------
-# Train
+# 11. Train
 # ---------------------------
-print("\nStarting training...")
+print("\nStarting training on round-1 labeled pool...")
 trainer.train()
 
-
 # ---------------------------
-# Final evaluation on test set
+# 12. Evaluate on test set
 # ---------------------------
 print("\nEvaluating on test set...")
 test_results = trainer.evaluate(test_tokenized)
