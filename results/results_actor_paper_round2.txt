@@ -1,0 +1,26 @@
+ACTOR (Paper Setting) – Random Acquisition Round 2
+
+Dataset: HS-Brexit
+Initial labeled pool size: 60
+Round-2 labeled pool size: 180
+Remaining unlabeled pool size: 4524
+
+Training setup:
+- Model: BERT-base + annotator-specific heads (ACTOR)
+- Epochs: 3
+- Batch size: 32
+- Learning rate: 2e-5
+- Weight decay: 0.01
+
+Round-2 label distribution:
+- 0: 155
+- 1: 25
+
+Test results:
+- Accuracy: 0.8681
+- Macro-F1: 0.4647
+- Weighted-F1: 0.8077
+
+Notes:
+- This is the paper-matched random acquisition round 2 result.
+- Performance is still nearly unchanged relative to the initial pool and round 1.

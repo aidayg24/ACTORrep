@@ -1,0 +1,29 @@
+ACTOR (Paper Setting) – Group Entropy Round 4
+
+Dataset: HS-Brexit
+Initial labeled pool size: 60
+Group-entropy round-4 labeled pool size: 300
+Remaining unlabeled pool size: 4404
+
+Training setup:
+- Model: BERT-base + annotator-specific heads (ACTOR)
+- Epochs: 3
+- Batch size: 32
+- Learning rate: 2e-5
+- Weight decay: 0.01
+
+Round-4 label distribution:
+- 0: 269
+- 1: 31
+
+Selected batch observation:
+- Group-entropy selected 60 class-0 examples and 0 class-1 examples
+
+Test results:
+- Accuracy: 0.8690
+- Macro-F1: 0.4650
+- Weighted-F1: 0.8082
+
+Notes:
+- Under the current implementation, group-level entropy did not improve over the random baseline.
+- The selected batch was entirely majority-class, suggesting that the acquisition implementation or evaluation setup may still differ from the paper.

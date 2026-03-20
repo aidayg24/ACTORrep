@@ -1,0 +1,36 @@
+ACTOR (Paper Setting) – Random Acquisition Summary
+
+Dataset: HS-Brexit
+Paper setting:
+- Initial labeled pool size: 60
+- Query size per round: 60
+- Batch size: 32
+- Learning rate: 2e-5
+- Weight decay: 0.01
+
+Results by round:
+
+Initial pool
+- labeled pool size: 60
+- macro-F1: 0.4644
+- weighted-F1: 0.8072
+
+Round 1
+- labeled pool size: 120
+- macro-F1: 0.4650
+- weighted-F1: 0.8082
+
+Round 2
+- labeled pool size: 180
+- macro-F1: 0.4647
+- weighted-F1: 0.8077
+
+Round 3
+- labeled pool size: 240
+- macro-F1: 0.4650
+- weighted-F1: 0.8082
+
+Observation:
+Under the paper-matched HS-Brexit budget, random acquisition does not lead to
+meaningful improvement in macro-F1 across the first three acquisition rounds.
+This provides a clean baseline for comparing smarter acquisition strategies.

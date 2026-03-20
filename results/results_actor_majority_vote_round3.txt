@@ -1,0 +1,23 @@
+ACTOR Majority-Vote Evaluation – Paper Round 3 Checkpoint
+
+Checkpoint:
+- outputs/actor_paper_round3/actor_model_state.pt
+
+Evaluation setup:
+- For each unique test item, run the text through all 6 annotator heads
+- Take majority vote over the 6 head predictions
+- Compare against the gold majority-vote label
+
+Results:
+- Accuracy: 0.8929
+- Macro-F1: 0.4717
+- Weighted-F1: 0.8423
+
+Observation:
+- All annotator heads largely predict class 0
+- Majority-vote prediction collapses to class 0 for the evaluated items
+- Class 1 receives no predicted samples in the classification report
+
+Interpretation:
+- The ACTOR model is currently dominated by the majority class under the paper-matched low-budget setting.
+- This likely explains why random acquisition and the current group-entropy implementation do not improve macro-F1.
