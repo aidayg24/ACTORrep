@@ -1,0 +1,86 @@
+ACTOR Replication – Weighted Group Entropy
+Round 1 Results
+
+Selection step
+--------------
+Selection file:
+select_paper_round1_group_entropy_weighted.py
+
+Input labeled pool:
+../processed_data/hsbrexit_paper_initial_labeled_pool.csv
+
+Input unlabeled pool:
+../processed_data/hsbrexit_paper_unlabeled_pool.csv
+
+Model used for acquisition:
+../outputs/actor_initial_pool_paper_weighted/actor_model_state.pt
+
+Selected top uncertain items:
+60
+
+Updated labeled pool size after acquisition:
+416
+
+Remaining unlabeled pool size after acquisition:
+4288
+
+Selected label distribution (debug only):
+label 0: 283
+label 1: 73
+
+
+Training step
+-------------
+Training file:
+train_actor_paper_group_weighted_round1.py
+
+Training pool:
+../processed_data/hsbrexit_paper_group_weighted_labeled_pool_round1.csv
+
+Saved model:
+../outputs/actor_paper_group_weighted_round1/actor_model_state.pt
+
+Round-1 pool label distribution:
+label 0: 335
+label 1: 81
+
+Class weights:
+class 0: 0.6209
+class 1: 2.5679
+
+
+Dev results
+-----------
+Epoch 1:
+eval_loss: 0.6778
+eval_accuracy: 0.7708
+eval_macro_f1: 0.5224
+eval_weighted_f1: 0.7766
+
+Epoch 2:
+eval_loss: 0.7263
+eval_accuracy: 0.8462
+eval_macro_f1: 0.5100
+eval_weighted_f1: 0.8096
+
+Epoch 3:
+eval_loss: 0.7386
+eval_accuracy: 0.8214
+eval_macro_f1: 0.5134
+eval_weighted_f1: 0.7992
+
+
+Test results
+------------
+eval_loss: 0.7285
+eval_accuracy: 0.7907
+eval_macro_f1: 0.5166
+eval_weighted_f1: 0.7853
+
+
+Interpretation
+--------------
+This is the first weighted group-entropy active learning round.
+Compared to the earlier collapsed unweighted setup, this model no longer predicts only class 0.
+Macro-F1 is still modest, but the model is now learning minority-class behavior better than the degenerate baseline.
+This means the weighted setup is the correct direction to continue for the replication.

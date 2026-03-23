@@ -1,0 +1,56 @@
+ACTOR Replication – Weighted Group Entropy
+Round 2 Selection Results
+
+Selection step
+--------------
+Selection file:
+select_paper_round2_group_entropy_weighted.py
+
+Input labeled pool:
+../processed_data/hsbrexit_paper_group_weighted_labeled_pool_round1.csv
+
+Input unlabeled pool:
+../processed_data/hsbrexit_paper_group_weighted_unlabeled_pool_round1.csv
+
+Model used for acquisition:
+../outputs/actor_paper_group_weighted_round1/actor_model_state.pt
+
+Item identifier:
+item_id
+
+Unique unlabeled items scored:
+724
+
+Selected top uncertain items:
+60
+
+Updated labeled pool size after acquisition:
+772
+
+Remaining unlabeled pool size after acquisition:
+3932
+
+Selected label distribution (debug only):
+label 0: 282
+label 1: 74
+
+
+Top entropy examples (inspection)
+--------------------------------
+Entropy values are close to ln(2) ≈ 0.693, indicating high uncertainty.
+This confirms that group-entropy acquisition is selecting maximally uncertain samples.
+
+Examples include:
+- strong anti-immigration / Islam-related tweets
+- politically polarized content
+- borderline classification cases
+
+
+Interpretation
+--------------
+Compared to Round 1:
+- pool size increased from 416 → 772
+- uncertainty-driven selection continues to focus on difficult, ambiguous samples
+- class balance in selected data remains skewed but includes minority examples
+
+This confirms that the active learning loop is functioning correctly for Round 2 acquisition.
