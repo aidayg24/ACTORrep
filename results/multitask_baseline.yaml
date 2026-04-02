@@ -1,0 +1,36 @@
+model:
+  name: bert-base-uncased
+  type: multi_task_sequence_classification
+  labeling: annotation_level
+  annotator_specific_heads: 6
+
+training:
+  epochs: 3
+  batch_size: 8
+  learning_rate: 2e-5
+  weight_decay: 0.01
+  evaluation_strategy: epoch
+  best_model_metric: macro_f1
+
+validation:
+  - epoch: 1
+    macro_f1: 0.7398
+    weighted_f1: 0.8818
+    accuracy: 0.8819
+    loss: 0.3001
+  - epoch: 2
+    macro_f1: 0.7513
+    weighted_f1: 0.8873
+    accuracy: 0.8879
+    loss: 0.2988
+  - epoch: 3
+    macro_f1: 0.7231
+    weighted_f1: 0.8812
+    accuracy: 0.8889
+    loss: 0.3323
+
+test:
+  accuracy: 0.8810
+  macro_f1: 0.7368
+  weighted_f1: 0.8806
+  loss: 0.3503

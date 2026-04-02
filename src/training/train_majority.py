@@ -3,7 +3,7 @@ Training the majority model
 """
 from transformers import TrainingArguments, Trainer
 
-from src.evaluation.majority_metrics import compute_metrics
+from src.evaluation.metrics import compute_metrics
 from src.models.majority_baseline import build_majority_model
 from src.data.majority_dataset import prepare_majority_datasets
 

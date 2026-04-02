@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 def compute_metrics(eval_pred):
     """
-     Compute evaluation metrics for the majority baseline.
+     Compute evaluation metrics.
     :param eval_pred:
     :return:
     """

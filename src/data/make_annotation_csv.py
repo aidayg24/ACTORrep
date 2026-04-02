@@ -24,7 +24,7 @@ Output rows:
 1, text, Ann5, 0
 1, text, Ann6, 0
 
-This dataset will be used for the single-annotation baseline,
+This dataset will be used for the multi-task model baseline,
 which trains a standard BERT classifier on all individual annotations.
 """
 
@@ -32,8 +32,9 @@ import json
 import csv
 import os
 
-INPUT_FOLDER = "../HS-Brexit_dataset"
-OUTPUT_FOLDER = "../processed_data"
+INPUT_FOLDER = "../../data/HS-Brexit_dataset_raw"
+OUTPUT_FOLDER = "../../data/HS-Brexit_dataset_processed"
+
 
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
@@ -42,7 +43,7 @@ splits = ["train", "dev", "test"]
 for split in splits:
 
     input_path = f"{INPUT_FOLDER}/HS-Brexit_{split}.json"
-    output_path = f"{OUTPUT_FOLDER}/hsbrexit_{split}_annotations.csv"
+    output_path = f"{OUTPUT_FOLDER}/HS-brexit_{split}_annotations.csv"
 
     with open(input_path, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -50,13 +51,13 @@ for split in splits:
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
 
-        writer.writerow(["item_id", "text", "annotator_id", "label"])
+        writer.writerow(["item_id", "text", "annotator_id", "labels"])
 
         for item_id, item in data.items():
 
             text = item["text"]
-            annotations = item["annotations"].split(",")
-            annotators = item["annotators"].split(",")
+            annotations = [a.strip() for a in item["annotations"].split(",")]
+            annotators = [a.strip() for a in item["annotators"].split(",")]
 
             for annotator, label in zip(annotators, annotations):
 

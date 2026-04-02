@@ -8,7 +8,8 @@ from datasets import Dataset
 from transformers import AutoTokenizer
 
 
-def prepare_majority_datasets(train_path, dev_path, test_path):
+def prepare_majority_datasets(train_path, dev_path, test_path, model_name="bert-base-uncased",
+    max_length=128):
     """
     this function loads the datasets and return the torch format of them
     :param train_path: path to training data
@@ -31,14 +32,14 @@ def prepare_majority_datasets(train_path, dev_path, test_path):
     test_dataset = Dataset.from_pandas(test_df)
 
     # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     def tokenize_function(examples):
         return tokenizer(
             examples["text"],
             truncation=True,
             padding="max_length",
-            max_length=128
+            max_length=max_length
         )
 
     # Tokenize all splits
