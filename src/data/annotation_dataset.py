@@ -8,27 +8,35 @@ from datasets import Dataset
 from transformers import AutoTokenizer
 
 
-def prepare_annotation_datasets(train_path, dev_path, test_path, model_name="bert-base-uncased",
-    max_length=128):
+def prepare_annotation_datasets(train,
+                                dev,
+                                test,
+                                model_name="bert-base-uncased",
+                                max_length=128,
+                                annotator_to_id=None):
     """
-    this function loads the datasets and return the torch format of them
-    :param train_path: path to training data
-    :param dev_path: path to dev data
-    :param test_path: path to test data
-    :return:  train_tokenized, dev_tokenized, test_tokenized
-    """
-    # # Load csv files
-    # train_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_train_annotations.csv"
-    # dev_path = "../../data/HS-Brexit_dataset_processed/processed_data/HS-brexit_dev_annotations.csv"
-    # test_path = "../../data/HS-Brexit_dataset_processed/processed_data/HS-brexit_test_annotations.csv"
+    Prepare annotation-level datasets for training.
 
-    train_df = pd.read_csv(train_path)
-    dev_df = pd.read_csv(dev_path)
-    test_df = pd.read_csv(test_path)
+    This function accepts either:
+    - file paths (str) OR
+    - pandas DataFrames
+
+    :param train: path or DataFrame for training data
+    :param dev: path or DataFrame for dev data
+    :param test: path or DataFrame for test data
+    :param annotator_to_id: optional annotator mapping
+    """
+
+    # Load or use existing DataFrames
+    train_df = train if isinstance(train, pd.DataFrame) else pd.read_csv(train)
+    dev_df = dev if isinstance(dev, pd.DataFrame) else pd.read_csv(dev)
+    test_df = test if isinstance(test, pd.DataFrame) else pd.read_csv(test)
+
 
     # Build annotator mapping from train split only
-    annotators = sorted(train_df["annotator_id"].unique())
-    annotator_to_id = {ann: idx for idx, ann in enumerate(annotators)}
+    if annotator_to_id is None:
+        annotators = sorted(train_df["annotator_id"].unique())
+        annotator_to_id = {ann: idx for idx, ann in enumerate(annotators)}
 
     # Apply mapping to all splits
     for df, split_name in [(train_df, "train"), (dev_df, "dev"), (test_df, "test")]:
