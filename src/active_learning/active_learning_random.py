@@ -33,7 +33,7 @@ labeled_indices, unlabeled_indices = initialize_pools(
     seed=42)
 
 # active learning settings
-num_rounds = 2
+num_rounds = 50
 acquisition_size = 30
 output_path = "../../results/active_learning_random_sampling.json"
 
