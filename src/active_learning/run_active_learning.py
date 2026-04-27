@@ -33,7 +33,7 @@ def run_active_learning(
     output_dir_base,
     initial_size=100,
     acquisition_size=30,
-    num_rounds=60,
+    num_rounds=1,
     seed=42,
     text_column="text",
     needs_dataloader=True,

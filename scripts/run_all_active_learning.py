@@ -17,6 +17,7 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 EXPERIMENTS = {
     "random": "src/active_learning/active_learning_random.py",
@@ -28,7 +29,7 @@ EXPERIMENTS = {
 
 
 def main():
-    log_dir = Path("logs")
+    log_dir = PROJECT_ROOT / "logs"
     log_dir.mkdir(exist_ok=True)
 
     summary = {}
@@ -48,14 +49,17 @@ def main():
              open(err_path, "w", encoding="utf-8") as err_file:
 
             env = os.environ.copy()
-            env["PYTHONPATH"] = "."
+            env["PYTHONPATH"] = str(PROJECT_ROOT)
+
+            full_script_path = PROJECT_ROOT / script_path
 
             result = subprocess.run(
-                ["python", script_path],
+                ["python", str(full_script_path)],
                 stdout=out_file,
                 stderr=err_file,
                 text=True,
                 env=env,
+                cwd=PROJECT_ROOT,
             )
 
         end_time = datetime.now().isoformat()
