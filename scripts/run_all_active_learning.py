@@ -11,7 +11,7 @@ Run from project root:
 
     python scripts/run_all_active_learning.py
 """
-
+import os
 import json
 import subprocess
 from pathlib import Path
@@ -47,11 +47,15 @@ def main():
         with open(out_path, "w", encoding="utf-8") as out_file, \
              open(err_path, "w", encoding="utf-8") as err_file:
 
+            env = os.environ.copy()
+            env["PYTHONPATH"] = "."
+
             result = subprocess.run(
                 ["python", script_path],
                 stdout=out_file,
                 stderr=err_file,
                 text=True,
+                env=env,
             )
 
         end_time = datetime.now().isoformat()
