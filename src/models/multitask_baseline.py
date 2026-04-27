@@ -17,7 +17,8 @@ class MultiTaskModel(nn.Module):
         self.encoder = AutoModel.from_pretrained(model_name)
         hidden_size = self.encoder.config.hidden_size
         self.dropout = nn.Dropout(p=dropout_prob)
-        self.classifier_heads = nn.ModuleList([nn.Linear(hidden_size, num_labels) for _ in range(num_annotators)])
+        self.classifier_heads = nn.ModuleList([nn.Linear(hidden_size, num_labels) for _ in range(num_annotators)]) # one
+        # head per annotator
         self.loss_fn = nn.CrossEntropyLoss()
 
     def forward(self, input_ids, attention_mask, annotator_idx, labels=None):
