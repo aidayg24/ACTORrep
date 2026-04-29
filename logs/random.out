@@ -1,0 +1,7 @@
+
+===== ROUND 0 | random_sampling =====
+Labeled pool size: 100
+Unlabeled pool size: 4604
+
+Starting training...
+{'loss': '0.5562', 'grad_norm': '5.255', 'learning_rate': '1.815e-05', 'epoch': '1'}
