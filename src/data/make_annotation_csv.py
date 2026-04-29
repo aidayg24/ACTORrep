@@ -32,8 +32,8 @@ import json
 import csv
 import os
 
-INPUT_FOLDER = "../../data/HS-Brexit_dataset_raw"
-OUTPUT_FOLDER = "../../data/HS-Brexit_dataset_processed"
+INPUT_FOLDER = "data/HS-Brexit_dataset_raw"
+OUTPUT_FOLDER = "data/HS-Brexit_dataset_processed"
 
 
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
