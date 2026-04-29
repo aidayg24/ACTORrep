@@ -1,0 +1,47 @@
+{
+  "random": {
+    "script": "src/active_learning/active_learning_random.py",
+    "return_code": 1,
+    "status": "failed",
+    "started_at": "2026-04-27T19:57:45.577772",
+    "ended_at": "2026-04-27T19:57:59.639271",
+    "stdout_log": "logs/random.out",
+    "stderr_log": "logs/random.err"
+  },
+  "individual_entropy": {
+    "script": "src/active_learning/active_learning_individual_entropy.py",
+    "return_code": 1,
+    "status": "failed",
+    "started_at": "2026-04-27T19:57:59.639818",
+    "ended_at": "2026-04-27T19:58:05.986742",
+    "stdout_log": "logs/individual_entropy.out",
+    "stderr_log": "logs/individual_entropy.err"
+  },
+  "group_entropy": {
+    "script": "src/active_learning/active_learning_group_entropy_sampling.py",
+    "return_code": 1,
+    "status": "failed",
+    "started_at": "2026-04-27T19:58:05.987351",
+    "ended_at": "2026-04-27T19:58:12.342111",
+    "stdout_log": "logs/group_entropy.out",
+    "stderr_log": "logs/group_entropy.err"
+  },
+  "vote_variance": {
+    "script": "src/active_learning/active_learning_vote_variance_sampling.py",
+    "return_code": 1,
+    "status": "failed",
+    "started_at": "2026-04-27T19:58:12.342598",
+    "ended_at": "2026-04-27T19:58:18.959484",
+    "stdout_log": "logs/vote_variance.out",
+    "stderr_log": "logs/vote_variance.err"
+  },
+  "mixed_entropy": {
+    "script": "src/active_learning/active_learning_mixed_entropy_sampling.py",
+    "return_code": 1,
+    "status": "failed",
+    "started_at": "2026-04-27T19:58:18.960097",
+    "ended_at": "2026-04-27T19:58:26.610246",
+    "stdout_log": "logs/mixed_entropy.out",
+    "stderr_log": "logs/mixed_entropy.err"
+  }
+}
