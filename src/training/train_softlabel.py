@@ -8,9 +8,9 @@ from src.evaluation.metrics_softlabel import compute_metrics_softlabel
 from src.models.softlabel_baseline import build_softlabel_model
 
 # data path
-train_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_train_softlabel.csv"
-dev_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_dev_softlabel.csv"
-test_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_test_softlabel.csv"
+train_path = "data/HS-Brexit_dataset_processed/HS-brexit_train_softlabel.csv"
+dev_path = "data/HS-Brexit_dataset_processed/HS-brexit_dev_softlabel.csv"
+test_path = "data/HS-Brexit_dataset_processed/HS-brexit_test_softlabel.csv"
 # load annotation datasets
 train_tokenized, dev_tokenized, test_tokenized = prepare_softlabel_datasets(
     train_path,
@@ -27,7 +27,7 @@ model = build_softlabel_model()
 
 # Training configuration
 training_args = TrainingArguments(
-    output_dir="../../outputs/softlabel_baseline",
+    output_dir="outputs/softlabel_baseline",
     eval_strategy="epoch",
     save_strategy="epoch",
     logging_strategy="epoch",

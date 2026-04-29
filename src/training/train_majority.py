@@ -8,15 +8,15 @@ from src.models.majority_baseline import build_majority_model
 from src.data.majority_dataset import prepare_majority_datasets
 
 # data path
-train_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_train_majority.csv"
-dev_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_dev_majority.csv"
-test_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_test_majority.csv"
+train_path = "data/HS-Brexit_dataset_processed/HS-brexit_train_majority.csv"
+dev_path = "data/HS-Brexit_dataset_processed/HS-brexit_dev_majority.csv"
+test_path = "data/HS-Brexit_dataset_processed/HS-brexit_test_majority.csv"
 
 train_tokenized, dev_tokenized, test_tokenized = prepare_majority_datasets(train_path, dev_path, test_path)
 
 # Training configuration
 training_args = TrainingArguments(
-    output_dir="../../outputs/majority_baseline",
+    output_dir="outputs/majority_baseline",
     eval_strategy="epoch",
     save_strategy="epoch",
     logging_strategy="epoch",

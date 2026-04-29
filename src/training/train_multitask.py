@@ -117,9 +117,9 @@ def main():
     """
 
     # data path
-    train_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_train_annotations.csv"
-    dev_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_dev_annotations.csv"
-    test_path = "../../data/HS-Brexit_dataset_processed/HS-brexit_test_annotations.csv"
+    train_path = "data/HS-Brexit_dataset_processed/HS-brexit_train_annotations.csv"
+    dev_path = "data/HS-Brexit_dataset_processed/HS-brexit_dev_annotations.csv"
+    test_path = "data/HS-Brexit_dataset_processed/HS-brexit_test_annotations.csv"
 
     # load annotation datasets
     train_tokenized, dev_tokenized, test_tokenized, annotator_to_id = prepare_annotation_datasets(
@@ -134,7 +134,7 @@ def main():
         dev_dataset=dev_tokenized,
         test_dataset=test_tokenized,
         num_annotators=len(annotator_to_id),
-        output_dir="../../outputs/multitask_baseline",
+        output_dir="outputs/multitask_baseline",
         model_name="bert-base-uncased",
         num_labels=2,
         num_train_epochs=10,
