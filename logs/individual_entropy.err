@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/gpfs/bwfor/home/tu/tu_tu/tu_zxope51/ACTORrep/src/active_learning/active_learning_individual_entropy.py", line 1, in <module>
+    from src.active_learning.run_active_learning import run_active_learning
+  File "/gpfs/bwfor/home/tu/tu_tu/tu_zxope51/ACTORrep/src/active_learning/run_active_learning.py", line 18, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
