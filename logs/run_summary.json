@@ -1,0 +1,11 @@
+{
+  "random": {
+    "script": "src/active_learning/active_learning_random.py",
+    "return_code": 1,
+    "status": "failed",
+    "started_at": "2026-04-29T15:21:34.031928",
+    "ended_at": "2026-04-30T00:31:11.029220",
+    "stdout_log": "/gpfs/bwfor/home/tu/tu_tu/tu_zxope51/ACTORrep/logs/random.out",
+    "stderr_log": "/gpfs/bwfor/home/tu/tu_tu/tu_zxope51/ACTORrep/logs/random.err"
+  }
+}

@@ -1,0 +1,15 @@
+
+===== ROUND 0 | actor_individual_entropy =====
+Labeled pool size: 100
+Unlabeled pool size: 4604
+
+Starting training...
+{'loss': '0.4914', 'grad_norm': '4.013', 'learning_rate': '1.815e-05', 'epoch': '1'}
+{'eval_loss': '0.4011', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '4300', 'eval_samples_per_second': '0.234', 'eval_steps_per_second': '0.029', 'epoch': '1'}
+{'loss': '0.2594', 'grad_norm': '1.909', 'learning_rate': '1.615e-05', 'epoch': '2'}
+{'eval_loss': '0.4185', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '4309', 'eval_samples_per_second': '0.234', 'eval_steps_per_second': '0.029', 'epoch': '2'}
+{'loss': '0.2548', 'grad_norm': '9.536', 'learning_rate': '1.415e-05', 'epoch': '3'}
+{'eval_loss': '0.4509', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '3772', 'eval_samples_per_second': '0.267', 'eval_steps_per_second': '0.033', 'epoch': '3'}
+{'train_runtime': '1.899e+04', 'train_samples_per_second': '0.053', 'train_steps_per_second': '0.007', 'train_loss': '0.3352', 'epoch': '3'}
+
+Evaluating on dev set...
