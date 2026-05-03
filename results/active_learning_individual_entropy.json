@@ -1,0 +1,28 @@
+[
+  {
+    "round": 0,
+    "method": "actor_individual_entropy",
+    "labeled_size": 100,
+    "unlabeled_size": 4604,
+    "dev_results": {
+      "eval_loss": 0.4010353684425354,
+      "eval_accuracy": 0.8690476190476191,
+      "eval_macro_f1": 0.46496815286624205,
+      "eval_weighted_f1": 0.8081589323627539,
+      "eval_runtime": 1.9403,
+      "eval_samples_per_second": 519.518,
+      "eval_steps_per_second": 64.94,
+      "epoch": 3.0
+    },
+    "test_results": {
+      "eval_loss": 0.40339750051498413,
+      "eval_accuracy": 0.8690476190476191,
+      "eval_macro_f1": 0.46496815286624205,
+      "eval_weighted_f1": 0.8081589323627539,
+      "eval_runtime": 1.9453,
+      "eval_samples_per_second": 518.178,
+      "eval_steps_per_second": 64.772,
+      "epoch": 3.0
+    }
+  }
+]

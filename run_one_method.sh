@@ -12,6 +12,8 @@ METHOD=$1
 
 cd /gpfs/bwfor/home/tu/tu_tu/tu_zxope51/ACTORrep
 
+export PYTHONPATH=/gpfs/bwfor/home/tu/tu_tu/tu_zxope51/ACTORrep:$PYTHONPATH
+
 module load devel/python/3.13.1
 source venv/bin/activate
 
