@@ -1,0 +1,167 @@
+Running method: src/active_learning/active_learning_individual_entropy.py
+CUDA: True
+NVIDIA A40
+
+===== ROUND 0 | actor_individual_entropy =====
+Labeled pool size: 100
+Unlabeled pool size: 4604
+
+Starting training...
+{'loss': '0.5869', 'grad_norm': '5.311', 'learning_rate': '1.815e-05', 'epoch': '1'}
+{'eval_loss': '0.4071', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.933', 'eval_samples_per_second': '521.3', 'eval_steps_per_second': '65.17', 'epoch': '1'}
+{'loss': '0.2938', 'grad_norm': '2.144', 'learning_rate': '1.615e-05', 'epoch': '2'}
+{'eval_loss': '0.4216', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.933', 'eval_samples_per_second': '521.6', 'eval_steps_per_second': '65.2', 'epoch': '2'}
+{'loss': '0.2489', 'grad_norm': '9.845', 'learning_rate': '1.415e-05', 'epoch': '3'}
+{'eval_loss': '0.4476', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.923', 'eval_samples_per_second': '524.3', 'eval_steps_per_second': '65.54', 'epoch': '3'}
+{'train_runtime': '10.62', 'train_samples_per_second': '94.19', 'train_steps_per_second': '12.24', 'train_loss': '0.3765', 'epoch': '3'}
+
+Evaluating on dev set...
+
+Evaluating on test set...
+
+Dev results:
+{'eval_loss': 0.40705734491348267, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.46496815286624205, 'eval_weighted_f1': 0.8081589323627539, 'eval_runtime': 1.9238, 'eval_samples_per_second': 523.956, 'eval_steps_per_second': 65.495, 'epoch': 3.0}
+
+Test results:
+{'eval_loss': 0.4033852815628052, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.46496815286624205, 'eval_weighted_f1': 0.8081589323627539, 'eval_runtime': 1.9322, 'eval_samples_per_second': 521.694, 'eval_steps_per_second': 65.212, 'epoch': 3.0}
+
+===== ROUND 1 | actor_individual_entropy =====
+Labeled pool size: 130
+Unlabeled pool size: 4574
+
+Starting training...
+{'loss': '0.4881', 'grad_norm': '6.885', 'learning_rate': '1.812e-05', 'epoch': '1'}
+{'eval_loss': '0.4251', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.943', 'eval_samples_per_second': '518.8', 'eval_steps_per_second': '64.85', 'epoch': '1'}
+{'loss': '0.2926', 'grad_norm': '2.051', 'learning_rate': '1.612e-05', 'epoch': '2'}
+{'eval_loss': '0.4534', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.939', 'eval_samples_per_second': '519.8', 'eval_steps_per_second': '64.97', 'epoch': '2'}
+{'loss': '0.2597', 'grad_norm': '1.179', 'learning_rate': '1.412e-05', 'epoch': '3'}
+{'eval_loss': '0.4685', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.942', 'eval_samples_per_second': '519.1', 'eval_steps_per_second': '64.89', 'epoch': '3'}
+{'train_runtime': '10.89', 'train_samples_per_second': '119.3', 'train_steps_per_second': '15.61', 'train_loss': '0.3468', 'epoch': '3'}
+
+Evaluating on dev set...
+
+Evaluating on test set...
+
+Dev results:
+{'eval_loss': 0.4251308739185333, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.46496815286624205, 'eval_weighted_f1': 0.8081589323627539, 'eval_runtime': 1.9389, 'eval_samples_per_second': 519.893, 'eval_steps_per_second': 64.987, 'epoch': 3.0}
+
+Test results:
+{'eval_loss': 0.4252946078777313, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.46496815286624205, 'eval_weighted_f1': 0.8081589323627539, 'eval_runtime': 1.9451, 'eval_samples_per_second': 518.226, 'eval_steps_per_second': 64.778, 'epoch': 3.0}
+
+===== ROUND 2 | actor_individual_entropy =====
+Labeled pool size: 160
+Unlabeled pool size: 4544
+
+Starting training...
+{'loss': '0.4568', 'grad_norm': '4.937', 'learning_rate': '1.81e-05', 'epoch': '1'}
+{'eval_loss': '0.3955', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.951', 'eval_samples_per_second': '516.7', 'eval_steps_per_second': '64.59', 'epoch': '1'}
+{'loss': '0.2735', 'grad_norm': '1.107', 'learning_rate': '1.61e-05', 'epoch': '2'}
+{'eval_loss': '0.4679', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.952', 'eval_samples_per_second': '516.3', 'eval_steps_per_second': '64.53', 'epoch': '2'}
+{'loss': '0.273', 'grad_norm': '5.032', 'learning_rate': '1.41e-05', 'epoch': '3'}
+{'eval_loss': '0.4881', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.959', 'eval_samples_per_second': '514.6', 'eval_steps_per_second': '64.33', 'epoch': '3'}
+{'train_runtime': '11.54', 'train_samples_per_second': '138.7', 'train_steps_per_second': '17.33', 'train_loss': '0.3344', 'epoch': '3'}
+
+Evaluating on dev set...
+
+Evaluating on test set...
+
+Dev results:
+{'eval_loss': 0.39548322558403015, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.46496815286624205, 'eval_weighted_f1': 0.8081589323627539, 'eval_runtime': 1.9499, 'eval_samples_per_second': 516.937, 'eval_steps_per_second': 64.617, 'epoch': 3.0}
+
+Test results:
+{'eval_loss': 0.400940477848053, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.46496815286624205, 'eval_weighted_f1': 0.8081589323627539, 'eval_runtime': 1.9589, 'eval_samples_per_second': 514.582, 'eval_steps_per_second': 64.323, 'epoch': 3.0}
+
+===== ROUND 3 | actor_individual_entropy =====
+Labeled pool size: 190
+Unlabeled pool size: 4514
+
+Starting training...
+{'loss': '0.4808', 'grad_norm': '5.525', 'learning_rate': '1.808e-05', 'epoch': '1'}
+{'eval_loss': '0.3821', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.953', 'eval_samples_per_second': '516.2', 'eval_steps_per_second': '64.52', 'epoch': '1'}
+{'loss': '0.303', 'grad_norm': '4.938', 'learning_rate': '1.608e-05', 'epoch': '2'}
+{'eval_loss': '0.4154', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.4724', 'eval_weighted_f1': '0.81', 'eval_runtime': '1.954', 'eval_samples_per_second': '515.8', 'eval_steps_per_second': '64.47', 'epoch': '2'}
+{'loss': '0.2358', 'grad_norm': '0.6922', 'learning_rate': '1.408e-05', 'epoch': '3'}
+{'eval_loss': '0.4284', 'eval_accuracy': '0.8681', 'eval_macro_f1': '0.5058', 'eval_weighted_f1': '0.8181', 'eval_runtime': '1.955', 'eval_samples_per_second': '515.6', 'eval_steps_per_second': '64.45', 'epoch': '3'}
+{'loss': '0.2072', 'grad_norm': '7.843', 'learning_rate': '1.208e-05', 'epoch': '4'}
+{'eval_loss': '0.4646', 'eval_accuracy': '0.8651', 'eval_macro_f1': '0.5041', 'eval_weighted_f1': '0.8164', 'eval_runtime': '1.955', 'eval_samples_per_second': '515.5', 'eval_steps_per_second': '64.44', 'epoch': '4'}
+{'loss': '0.1232', 'grad_norm': '7.431', 'learning_rate': '1.008e-05', 'epoch': '5'}
+{'eval_loss': '0.4749', 'eval_accuracy': '0.8681', 'eval_macro_f1': '0.5058', 'eval_weighted_f1': '0.8181', 'eval_runtime': '1.961', 'eval_samples_per_second': '514.1', 'eval_steps_per_second': '64.27', 'epoch': '5'}
+{'train_runtime': '20.27', 'train_samples_per_second': '93.72', 'train_steps_per_second': '11.84', 'train_loss': '0.27', 'epoch': '5'}
+
+Evaluating on dev set...
+
+Evaluating on test set...
+
+Dev results:
+{'eval_loss': 0.4283640384674072, 'eval_accuracy': 0.8680555555555556, 'eval_macro_f1': 0.5058368196981146, 'eval_weighted_f1': 0.818108823728168, 'eval_runtime': 1.9536, 'eval_samples_per_second': 515.959, 'eval_steps_per_second': 64.495, 'epoch': 5.0}
+
+Test results:
+{'eval_loss': 0.4249350428581238, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.5126510878323932, 'eval_weighted_f1': 0.8202601588580638, 'eval_runtime': 1.9579, 'eval_samples_per_second': 514.833, 'eval_steps_per_second': 64.354, 'epoch': 5.0}
+
+===== ROUND 4 | actor_individual_entropy =====
+Labeled pool size: 220
+Unlabeled pool size: 4484
+
+Starting training...
+{'loss': '0.5206', 'grad_norm': '7.571', 'learning_rate': '1.807e-05', 'epoch': '1'}
+{'eval_loss': '0.4024', 'eval_accuracy': '0.8641', 'eval_macro_f1': '0.4707', 'eval_weighted_f1': '0.8075', 'eval_runtime': '1.962', 'eval_samples_per_second': '513.7', 'eval_steps_per_second': '64.21', 'epoch': '1'}
+{'loss': '0.3627', 'grad_norm': '6.129', 'learning_rate': '1.607e-05', 'epoch': '2'}
+{'eval_loss': '0.4275', 'eval_accuracy': '0.8452', 'eval_macro_f1': '0.5592', 'eval_weighted_f1': '0.8213', 'eval_runtime': '1.964', 'eval_samples_per_second': '513.3', 'eval_steps_per_second': '64.17', 'epoch': '2'}
+{'loss': '0.2506', 'grad_norm': '1.791', 'learning_rate': '1.407e-05', 'epoch': '3'}
+{'eval_loss': '0.4107', 'eval_accuracy': '0.8621', 'eval_macro_f1': '0.5462', 'eval_weighted_f1': '0.8257', 'eval_runtime': '1.964', 'eval_samples_per_second': '513.3', 'eval_steps_per_second': '64.16', 'epoch': '3'}
+{'loss': '0.1608', 'grad_norm': '9.767', 'learning_rate': '1.207e-05', 'epoch': '4'}
+{'eval_loss': '0.4344', 'eval_accuracy': '0.8681', 'eval_macro_f1': '0.561', 'eval_weighted_f1': '0.832', 'eval_runtime': '1.964', 'eval_samples_per_second': '513.3', 'eval_steps_per_second': '64.16', 'epoch': '4'}
+{'loss': '0.1086', 'grad_norm': '2.674', 'learning_rate': '1.007e-05', 'epoch': '5'}
+{'eval_loss': '0.4565', 'eval_accuracy': '0.871', 'eval_macro_f1': '0.5536', 'eval_weighted_f1': '0.8314', 'eval_runtime': '1.97', 'eval_samples_per_second': '511.8', 'eval_steps_per_second': '63.97', 'epoch': '5'}
+{'loss': '0.0754', 'grad_norm': '6.806', 'learning_rate': '8.071e-06', 'epoch': '6'}
+{'eval_loss': '0.4973', 'eval_accuracy': '0.87', 'eval_macro_f1': '0.5253', 'eval_weighted_f1': '0.8239', 'eval_runtime': '1.966', 'eval_samples_per_second': '512.9', 'eval_steps_per_second': '64.11', 'epoch': '6'}
+{'train_runtime': '25.33', 'train_samples_per_second': '86.87', 'train_steps_per_second': '11.06', 'train_loss': '0.2465', 'epoch': '6'}
+
+Evaluating on dev set...
+
+Evaluating on test set...
+
+Dev results:
+{'eval_loss': 0.434400737285614, 'eval_accuracy': 0.8680555555555556, 'eval_macro_f1': 0.561043170767644, 'eval_weighted_f1': 0.8320007203313524, 'eval_runtime': 1.9596, 'eval_samples_per_second': 514.385, 'eval_steps_per_second': 64.298, 'epoch': 6.0}
+
+Test results:
+{'eval_loss': 0.4040392339229584, 'eval_accuracy': 0.8690476190476191, 'eval_macro_f1': 0.593304886845741, 'eval_weighted_f1': 0.8404766853495931, 'eval_runtime': 1.9652, 'eval_samples_per_second': 512.92, 'eval_steps_per_second': 64.115, 'epoch': 6.0}
+
+===== ROUND 5 | actor_individual_entropy =====
+Labeled pool size: 250
+Unlabeled pool size: 4454
+
+Starting training...
+{'loss': '0.505', 'grad_norm': '4.712', 'learning_rate': '1.806e-05', 'epoch': '1'}
+{'eval_loss': '0.3856', 'eval_accuracy': '0.869', 'eval_macro_f1': '0.465', 'eval_weighted_f1': '0.8082', 'eval_runtime': '1.963', 'eval_samples_per_second': '513.5', 'eval_steps_per_second': '64.19', 'epoch': '1'}
+{'loss': '0.3899', 'grad_norm': '20.72', 'learning_rate': '1.606e-05', 'epoch': '2'}
+{'eval_loss': '0.4146', 'eval_accuracy': '0.8631', 'eval_macro_f1': '0.542', 'eval_weighted_f1': '0.8251', 'eval_runtime': '1.966', 'eval_samples_per_second': '512.6', 'eval_steps_per_second': '64.08', 'epoch': '2'}
+{'loss': '0.2665', 'grad_norm': '9.771', 'learning_rate': '1.406e-05', 'epoch': '3'}
+{'eval_loss': '0.4049', 'eval_accuracy': '0.8661', 'eval_macro_f1': '0.5544', 'eval_weighted_f1': '0.8295', 'eval_runtime': '1.964', 'eval_samples_per_second': '513.3', 'eval_steps_per_second': '64.16', 'epoch': '3'}
+{'loss': '0.1567', 'grad_norm': '1.888', 'learning_rate': '1.206e-05', 'epoch': '4'}
+{'eval_loss': '0.4381', 'eval_accuracy': '0.873', 'eval_macro_f1': '0.5553', 'eval_weighted_f1': '0.8327', 'eval_runtime': '1.965', 'eval_samples_per_second': '513', 'eval_steps_per_second': '64.12', 'epoch': '4'}
+{'loss': '0.09092', 'grad_norm': '4.351', 'learning_rate': '1.006e-05', 'epoch': '5'}
+{'eval_loss': '0.4417', 'eval_accuracy': '0.8671', 'eval_macro_f1': '0.5649', 'eval_weighted_f1': '0.8325', 'eval_runtime': '1.963', 'eval_samples_per_second': '513.4', 'eval_steps_per_second': '64.17', 'epoch': '5'}
+{'loss': '0.0572', 'grad_norm': '1.603', 'learning_rate': '8.063e-06', 'epoch': '6'}
+{'eval_loss': '0.499', 'eval_accuracy': '0.8681', 'eval_macro_f1': '0.546', 'eval_weighted_f1': '0.8282', 'eval_runtime': '1.965', 'eval_samples_per_second': '513', 'eval_steps_per_second': '64.12', 'epoch': '6'}
+{'loss': '0.04777', 'grad_norm': '0.3514', 'learning_rate': '6.062e-06', 'epoch': '7'}
+{'eval_loss': '0.4922', 'eval_accuracy': '0.8651', 'eval_macro_f1': '0.5536', 'eval_weighted_f1': '0.8288', 'eval_runtime': '1.965', 'eval_samples_per_second': '512.9', 'eval_steps_per_second': '64.11', 'epoch': '7'}
+{'train_runtime': '31.41', 'train_samples_per_second': '79.59', 'train_steps_per_second': '10.19', 'train_loss': '0.2163', 'epoch': '7'}
+
+Evaluating on dev set...
+
+Evaluating on test set...
+
+Dev results:
+{'eval_loss': 0.4416648745536804, 'eval_accuracy': 0.8670634920634921, 'eval_macro_f1': 0.564935064935065, 'eval_weighted_f1': 0.8325345289631003, 'eval_runtime': 1.9627, 'eval_samples_per_second': 513.582, 'eval_steps_per_second': 64.198, 'epoch': 7.0}
+
+Test results:
+{'eval_loss': 0.42079946398735046, 'eval_accuracy': 0.8700396825396826, 'eval_macro_f1': 0.5943263195730915, 'eval_weighted_f1': 0.8411743846117722, 'eval_runtime': 1.9682, 'eval_samples_per_second': 512.131, 'eval_steps_per_second': 64.016, 'epoch': 7.0}
+
+===== ROUND 6 | actor_individual_entropy =====
+Labeled pool size: 280
+Unlabeled pool size: 4424
+
+Starting training...
+{'loss': '0.5179', 'grad_norm': '3.781', 'learning_rate': '1.806e-05', 'epoch': '1'}
+{'eval_loss': '0.3789', 'eval_accuracy': '0.872', 'eval_macro_f1': '0.4879', 'eval_weighted_f1': '0.8153', 'eval_runtime': '1.963', 'eval_samples_per_second': '513.6', 'eval_steps_per_second': '64.19', 'epoch': '1'}
