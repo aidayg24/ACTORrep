@@ -67,7 +67,7 @@ def train_multitask_model(
     training_args = TrainingArguments(
         output_dir=output_dir,
         eval_strategy="epoch",
-        save_strategy="epoch",
+        save_strategy="no",
         logging_strategy="epoch",
         num_train_epochs=num_train_epochs,
         per_device_train_batch_size=per_device_train_batch_size,

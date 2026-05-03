@@ -1,0 +1,7 @@
+Running method: src/active_learning/active_learning_group_entropy_sampling.py
+CUDA: True
+NVIDIA A40
+
+===== ROUND 0 | actor_group_entropy =====
+Labeled pool size: 100
+Unlabeled pool size: 4604
