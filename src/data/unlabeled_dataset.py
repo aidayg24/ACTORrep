@@ -7,9 +7,11 @@ def build_unlabeled_loader(
     df,
     text_column="text",
     id_column="original_index",
+    annotator_column="annotator_idx",
     tokenizer_name="bert-base-uncased",
     max_length=128,
     batch_size=32,
+    include_annotator=True,
 ):
     """
     Build unlabeled acquisition dataloader:
@@ -25,11 +27,8 @@ def build_unlabeled_loader(
     annotator_idx_list = []
 
     for _, row in df.iterrows():
-        text = row[text_column]
-        comment_id = int(row[id_column])
-
         enc = tokenizer(
-            text,
+            row[text_column],
             truncation=True,
             padding="max_length",
             max_length=max_length,
@@ -38,21 +37,28 @@ def build_unlabeled_loader(
 
         input_ids_list.append(enc["input_ids"].squeeze(0))
         attention_mask_list.append(enc["attention_mask"].squeeze(0))
-        comment_ids_list.append(comment_id)
-        annotator_idx = int(row["annotator_idx"])
-        annotator_idx_list.append(annotator_idx)
+        comment_ids_list.append(int(row[id_column]))
+
+        if include_annotator:
+            annotator_idx_list.append(int(row[annotator_column]))
 
     input_ids_tensor = torch.stack(input_ids_list)
     attention_mask_tensor = torch.stack(attention_mask_list)
     comment_ids_tensor = torch.tensor(comment_ids_list, dtype=torch.long)
-    annotator_idx_tensor = torch.tensor(annotator_idx_list, dtype=torch.long)
-    
-    dataset = TensorDataset(
-        input_ids_tensor,
-        attention_mask_tensor,
-        comment_ids_tensor,
-        annotator_idx_tensor
-    )
-    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
 
-    return dataloader
+    if include_annotator:
+        annotator_idx_tensor = torch.tensor(annotator_idx_list, dtype=torch.long)
+        dataset = TensorDataset(
+            input_ids_tensor,
+            attention_mask_tensor,
+            comment_ids_tensor,
+            annotator_idx_tensor,
+        )
+    else:
+        dataset = TensorDataset(
+            input_ids_tensor,
+            attention_mask_tensor,
+            comment_ids_tensor,
+        )
+
+    return DataLoader(dataset, batch_size=batch_size, shuffle=False)
