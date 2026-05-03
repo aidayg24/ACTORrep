@@ -752,5 +752,63 @@
       113,
       3299
     ]
+  },
+  {
+    "round": 13,
+    "method": "random_sampling",
+    "labeled_size": 490,
+    "unlabeled_size": 4214,
+    "dev_results": {
+      "eval_loss": 0.4124113917350769,
+      "eval_accuracy": 0.873015873015873,
+      "eval_macro_f1": 0.6708269126756539,
+      "eval_weighted_f1": 0.8612428449454298,
+      "eval_runtime": 1.998,
+      "eval_samples_per_second": 504.508,
+      "eval_steps_per_second": 63.063,
+      "epoch": 8.0
+    },
+    "test_results": {
+      "eval_loss": 0.3970525860786438,
+      "eval_accuracy": 0.878968253968254,
+      "eval_macro_f1": 0.7028761404051338,
+      "eval_weighted_f1": 0.8717067235120428,
+      "eval_runtime": 2.002,
+      "eval_samples_per_second": 503.485,
+      "eval_steps_per_second": 62.936,
+      "epoch": 8.0
+    },
+    "selected_indices": [
+      835,
+      1789,
+      1383,
+      2766,
+      735,
+      1679,
+      2759,
+      819,
+      3219,
+      4305,
+      3529,
+      3553,
+      4604,
+      3713,
+      2905,
+      3921,
+      378,
+      2358,
+      382,
+      2112,
+      4690,
+      130,
+      4241,
+      2048,
+      482,
+      3466,
+      2121,
+      4588,
+      3915,
+      1778
+    ]
   }
 ]
