@@ -1,9 +1,0 @@
-CUDA available: True
-GPU count: 1
-NVIDIA A100-SXM4-40GB
-
-==============================
-Running: random
-Script: src/active_learning/active_learning_random.py
-==============================
-
