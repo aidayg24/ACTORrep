@@ -74,7 +74,7 @@ def train_multitask_model(
         per_device_eval_batch_size=per_device_eval_batch_size,
         learning_rate=learning_rate,
         weight_decay=weight_decay,
-        load_best_model_at_end=True,
+        load_best_model_at_end=False,
         metric_for_best_model="macro_f1",
         greater_is_better=True,
         report_to="none"
