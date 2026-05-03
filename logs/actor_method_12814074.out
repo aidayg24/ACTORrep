@@ -1,7 +1,0 @@
-Running method: src/active_learning/active_learning_random.py
-CUDA: True
-NVIDIA A100-SXM4-40GB
-
-===== ROUND 0 | random_sampling =====
-Labeled pool size: 100
-Unlabeled pool size: 4604

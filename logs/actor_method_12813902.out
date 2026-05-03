@@ -1,7 +1,0 @@
-Running method: src/active_learning/active_learning_individual_entropy.py
-CUDA: True
-NVIDIA A100-SXM4-40GB
-
-===== ROUND 0 | actor_individual_entropy =====
-Labeled pool size: 100
-Unlabeled pool size: 4604

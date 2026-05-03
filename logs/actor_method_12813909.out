@@ -1,7 +1,0 @@
-Running method: src/active_learning/active_learning_vote_variance_sampling.py
-CUDA: True
-NVIDIA A40
-
-===== ROUND 0 | actor_vote_variance =====
-Labeled pool size: 100
-Unlabeled pool size: 4604
