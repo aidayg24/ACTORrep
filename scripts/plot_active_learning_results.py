@@ -16,6 +16,7 @@ RESULT_FILES = {
     "Mix": "../results/active_learning_mixed_entropy.json",
     "Group": "../results/active_learning_group_entropy.json",
     "Vote": "../results/active_learning_vote_variance.json",
+    "Bandit" : "../results/active_learning_bandit_ucb.json",
 }
 
 LINEWIDTHS = {
@@ -24,6 +25,7 @@ LINEWIDTHS = {
     "Mix": 1.8,
     "Group": 3.2,
     "Vote": 3.2,
+    "Bandit": 3.2,
 }
 
 
